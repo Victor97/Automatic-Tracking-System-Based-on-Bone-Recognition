@@ -13,4 +13,4 @@ NOTICE:
 摄像头：ZED双目视觉摄像机  
 被控对象：现有电动轮椅平台。  
 
-![image](Readme_Images/图片1.jpg)
+![image](https://github.com/Victor97/Automatic-Tracking-System-Based-on-Bone-Recognition/blob/master/Readme_Images/%E5%9B%BE%E7%89%871.jpg)
