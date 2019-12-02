@@ -24,7 +24,14 @@ OPENPOSE_ROS包
 -----------------
 ROS wrapper for OpenPose ( https://github.com/CMU-Perceptual-Computing-Lab/openpose ) allows the estimation of 2d multi-person pose from a single RGB camera (see commit number a1e0a5f4136e702b5731a268c2993fb75ca4753c ). Based on https://github.com/stevenjj/openpose_ros .  
 这个主要是在ROS下使用的OpenPose包，是GitHub上大神制作的一个包，作为工程文件放在catkin_workspace文件夹下。这边主要有一个OpenPose（Real-time multi-person keypoint detection library for body, face, hands, and foot estimation）库，这也是本次工程的技术核心.  
-* 值得注意的是，我们需要使用上面提到的a1e0a5f4136e702b5731a268c2993fb75ca4753c版本的库，否则本次工程无法运行。  
-* 此处忽略了OpenPose的配置，需要自行去CMU发布的GitHub上学习。  
+* 值得注意的是，我们需要使用上面提到的a1e0a5f4136e702b5731a268c2993fb75ca4753c版本的库，否则本次工程无法运行。
+* OpenPose的源码配置请不要放在工作区内编译，会导致编译不通过。
+* 注意这个是旧版的OpenPose_ros包，另外需要结合https://github.com/firephinx/openpose_ros 的代码结合，此处工作量较大，需要排查的代码问题很多，我写的   工程已经完全解决，可以直接使用，感兴趣的可以自行查看两ROS包的代码区别。  
 
+ZED_ROS_WRAPPER包
+------------------
+此包为ROS下的ZED驱动包，可以提供众多API节点供我们使用。  
 
+'''c++
+$ roslaunch zed_wrapped zed.launch
+'''
