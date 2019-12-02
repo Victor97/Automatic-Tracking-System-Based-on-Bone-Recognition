@@ -31,7 +31,25 @@ ROS wrapper for OpenPose ( https://github.com/CMU-Perceptual-Computing-Lab/openp
 ZED_ROS_WRAPPER包
 ------------------
 此包为ROS下的ZED驱动包，可以提供众多API节点供我们使用。  
-
-'''c++
+开启节点：  
+```c++
 $ roslaunch zed_wrapped zed.launch
-'''
+```
+我们可以订阅到很多2D,3D的图像主题：  
+* Depth and point cloud  
+```c++
+/zed/zed_node/depth/depth_registered: Depth map image registered on left image (32-bit float in meters by default)
+/zed/zed_node/depth/camera_info: Depth camera calibration data
+/zed/zed_node/point_cloud/cloud_registered: Registered color point cloud
+/zed/zed_node/confidence/confidence_image: Confidence image
+/zed/zed_node/confidence/confidence_map: Confidence image (floating point values)
+/zed/zed_node/disparity/disparity_image: Disparity image
+```
+* Tracking
+```c++
+/zed/zed_node/odom: Absolute 3D position and orientation relative to the Odometry frame (pure visual odometry for ZED, visual-inertial for ZED-M)
+/zed/zed_node/pose: Absolute 3D position and orientation relative to the Map frame (Sensor Fusion algorithm + SLAM)
+/zed/zed_node/pose_with_covariance: Camera pose referred to Map frame with covariance
+/zed/zed_node/path_odom: Sequence of camera odometry poses in Map frame
+/zed/zed_node/path_map: Sequence of camera poses in Map frame
+```
