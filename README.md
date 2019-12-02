@@ -35,7 +35,7 @@ ZED_ROS_WRAPPER包
 ```c++
 $ roslaunch zed_wrapped zed.launch
 ```
-我们可以订阅到很多2D,3D的图像主题：  
+我们可以订阅到很多深度图像主题：  
 * Depth and point cloud  
 ```
 /zed/zed_node/depth/depth_registered: Depth map image registered on left image
@@ -53,3 +53,16 @@ $ roslaunch zed_wrapped zed.launch
 /zed/zed_node/path_odom: Sequence of camera odometry poses in Map frame
 /zed/zed_node/path_map: Sequence of camera poses in Map frame
 ```
+
+ROSSERIAL包
+---------------------
+此包的作用是能够让ROS系统与Arduino通过串口建立通信通道，通过发布主题和订阅主题来获取数据。
+配置方法参考教程：https://blog.csdn.net/wanzew/article/details/80030768
+* 串口通信过程中会遇到Linux权限问题，出现/Dev/ttyACM0 no device的报警，可以通过获取管理员权限解锁串口设备:
+```java
+chmod 777 /dev/ttyACM0
+sudo usermod -aG dialout 用户名
+```
+
+启动
+---------------
