@@ -12,3 +12,5 @@ NOTICE:
 下位机：Arduino UNO官方核心板  
 摄像头：ZED双目视觉摄像机  
 被控对象：现有电动轮椅平台。  
+
+![image](Readme_Images/图片1.jpg)
