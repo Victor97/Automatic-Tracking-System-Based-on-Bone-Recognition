@@ -59,10 +59,41 @@ ROSSERIAL包
 此包的作用是能够让ROS系统与Arduino通过串口建立通信通道，通过发布主题和订阅主题来获取数据。
 配置方法参考教程：https://blog.csdn.net/wanzew/article/details/80030768
 * 串口通信过程中会遇到Linux权限问题，出现/Dev/ttyACM0 no device的报警，可以通过获取管理员权限解锁串口设备:
-```java
+```c++
 chmod 777 /dev/ttyACM0
 sudo usermod -aG dialout 用户名
 ```
 
 启动
 ---------------
+本来在设计的时候用QT设计了简单的人机交互界面UI，但是由于时间久远，UI的源码已经丢失了，有兴趣的读者可以自己设计一套，在此不再展示。
+启动文件已经集成为launch文件，通过ROS指令即可。
+* 首先需要打开ROS的master节点：
+```c++
+roscore
+```
+* 运行openpose节点，使其发布人像主题：
+```c++
+roslaunch openpose_ros openpose_ros.launch
+```
+* 运行核心Tracking文件：
+```c++
+roslaunch openpose_get openpose_get.launch
+```
+* 最后打开ROS的串口通道：
+```c++
+rosrun rosserial_arduino make_libraries.py
+```
+
+到此，整个系统就会跑起来了。如果想获取更多的主题信息，可以通过在Terminal或者RVIZ中订阅相关主题。
+
+* 注：
+  以上的教程中，有一些细节并没有讲，可能会导致致命错误。如果对此项目有需求且遇到问题者，可以在Issues中提出，我看到后会尽力解答。
+  UI界面的设计并不难，思路可以是编写按钮的槽函数：
+  ```c++
+  system("gnome-terminal -x bash -c 'source ~/my_ws/devel/setup.bash;roslaunch my_package file.launch'"); 
+  ```
+  或者：
+  ```c++
+  system("gnome-terminal -x bash -c 'roslaunch my_package file.launch'");
+  ```
